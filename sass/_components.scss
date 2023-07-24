@@ -7,8 +7,16 @@
 
 //  SEARCH-BOX
 
-.search {
+.header__search-container {
   flex: 0 0 40%;
+
+  @media only screen and (max-width: $bp-smallest) {
+    order: 1;
+    flex: 0 0 100%;
+  }
+}
+
+.search {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -82,6 +90,57 @@
     fill: var(--color-grey-dark-3);
   }
 }
+//SEARCH SUGGESTIONS
+.search {
+  position: relative;
+
+  &__input:focus ~ &__suggestions {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  &__suggestions {
+    position: absolute;
+    z-index: 100;
+    top: 100%;
+    width: 80%;
+    left: 12.5%;
+    background-color: var(--color-grey-light-2);
+    box-shadow: var(--shadow-light);
+    border-radius: 5px;
+    overflow: hidden;
+
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.2s;
+  }
+
+  & .suggestions {
+    &__list {
+      list-style: none;
+      width: 100%;
+    }
+
+    &__item {
+      border-bottom: 1px solid var(--color-grey-light-3);
+      width: 100%;
+      text-align: center;
+      padding: 0.5rem 0;
+    }
+
+    &__link:link,
+    &__link:visited {
+      text-decoration: none;
+      color: var(--color-primary);
+    }
+
+    &__link:hover,
+    &__link:active {
+      text-decoration: none;
+      color: var(--color-primary-light);
+    }
+  }
+}
 
 //  USER NAVIGATION
 
@@ -98,6 +157,7 @@
 
     display: flex;
     align-items: center;
+    transition: background-color 0.2s;
   }
 
   & > *:hover {
@@ -105,6 +165,11 @@
   }
   &__icon-box {
     position: relative;
+  }
+
+  &__icon-box:nth-child(2):hover &__msg-hover {
+    opacity: 1;
+    visibility: visible;
   }
 
   &__icon {
@@ -129,13 +194,87 @@
     align-items: center;
   }
 
-  &__user {
+  &__msg-hover {
+    position: absolute;
+    z-index: 100;
+    top: 100%;
+    left: -25%;
+    width: 150%;
+    display: inline-block;
+    padding: 0.5rem;
+    background-color: var(--color-grey-light-2);
+    box-shadow: var(--shadow-light);
+    overflow: hidden;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.2s;
   }
 
   &__user-photo {
     width: 3.75rem;
     border-radius: 50%;
     margin-right: 1rem;
+  }
+}
+
+//USER MENU
+.user-nav {
+  &__user {
+    position: relative;
+  }
+
+  &__user:hover &__user-menu {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  &__user-menu {
+    position: absolute;
+    z-index: 100;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    display: flex;
+    overflow: hidden;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+    background-color: var(--color-grey-light-2);
+    flex-direction: column;
+    align-items: center;
+    cursor: auto;
+
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.2s;
+  }
+
+  & .user-menu {
+    &__list {
+      list-style: none;
+      width: 100%;
+    }
+
+    &__item {
+      border-bottom: 1px solid var(--color-grey-light-3);
+      width: 100%;
+      text-align: center;
+      padding: 0.5rem 0;
+    }
+
+    &__link:link,
+    &__link:visited {
+      text-decoration: none;
+      color: var(--color-primary);
+    }
+
+    &__link:hover,
+    &__link:active {
+      text-decoration: none;
+      color: var(--color-primary-light);
+    }
   }
 }
 
@@ -432,15 +571,18 @@
     margin-right: 0.7rem;
 
     //older browsers
-    // background-image: url(../img/chevron-thin-right.svg);
-    // background-size: cover;
+    background-image: url(../img/chevron-thin-right.svg);
+    background-size: cover;
 
     //newer browsers - masks
-    background-color: var(--color-primary);
-    mask-image: url(../img/chevron-thin-right.svg);
-    -webkit-mask-image: url(../img/chevron-thin-right.svg);
-    mask-size: cover;
-    -webkit-mask-size: cover;
+    @supports ((-webkit-mask-image: url()) or (mask-image: url())) {
+      background-color: var(--color-primary);
+      mask-image: url(../img/chevron-thin-right.svg);
+      -webkit-mask-image: url(../img/chevron-thin-right.svg);
+      mask-size: cover;
+      -webkit-mask-size: cover;
+      background-image: none;
+    }
   }
 }
 

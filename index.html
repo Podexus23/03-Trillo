@@ -16,17 +16,45 @@
     <div class="container">
       <header class="header">
         <img src="img/logo.png" alt="trillo logo" class="logo" />
-        <form action="#" class="search">
-          <input
-            type="text"
-            class="search__input"
-            placeholder="Search hotels" />
-          <button class="search__button">
-            <svg class="search__icon">
-              <use xlink:href="img/sprite.svg#icon-magnifying-glass"></use>
-            </svg>
-          </button>
-        </form>
+        <div class="header__search-container">
+          <form action="#" class="search">
+            <input
+              type="text"
+              class="search__input"
+              placeholder="Search hotels" />
+            <button class="search__button">
+              <svg class="search__icon">
+                <use xlink:href="img/sprite.svg#icon-magnifying-glass"></use>
+              </svg>
+            </button>
+            <div class="search__suggestions">
+              <ul class="suggestions__list">
+                <li class="suggestions__item">
+                  <a href="#" class="suggestions__link">lorem</a>
+                </li>
+                <li class="suggestions__item">
+                  <a href="#" class="suggestions__link">ipsum</a>
+                </li>
+                <li class="suggestions__item">
+                  <a href="#" class="suggestions__link">free margaritas</a>
+                </li>
+              </ul>
+            </div>
+          </form>
+          <div class="user-nav__user-menu">
+            <ul class="user-menu__list">
+              <li class="user-menu__item">
+                <a href="#" class="user-menu__link">Account</a>
+              </li>
+              <li class="user-menu__item">
+                <a href="#" class="user-menu__link">Settings</a>
+              </li>
+              <li class="user-menu__item">
+                <a href="#" class="user-menu__link">Logout</a>
+              </li>
+            </ul>
+          </div>
+        </div>
 
         <nav class="user-nav">
           <div class="user-nav__icon-box">
@@ -40,6 +68,7 @@
               <use xlink:href="img/sprite.svg#icon-chat"></use>
             </svg>
             <span class="user-nav__notification">13</span>
+            <div class="user-nav__msg-hover">You have 13 unread messages</div>
           </div>
           <div class="user-nav__user">
             <img
@@ -47,6 +76,19 @@
               alt="User photo"
               class="user-nav__user-photo" />
             <span class="user-nav__user-name">Jonas</span>
+            <div class="user-nav__user-menu">
+              <ul class="user-menu__list">
+                <li class="user-menu__item">
+                  <a href="#" class="user-menu__link">Account</a>
+                </li>
+                <li class="user-menu__item">
+                  <a href="#" class="user-menu__link">Settings</a>
+                </li>
+                <li class="user-menu__item">
+                  <a href="#" class="user-menu__link">Logout</a>
+                </li>
+              </ul>
+            </div>
           </div>
         </nav>
       </header>
