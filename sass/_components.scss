@@ -388,9 +388,51 @@
 .gallery {
   display: flex;
 
+  &__item {
+    position: relative;
+  }
+
+  &__item:hover &__photo {
+    -webkit-filter: brightness(70%) blur(2px);
+    filter: brightness(70%) blur(2px);
+    transform: scale(1.05);
+    z-index: 10;
+  }
+
   &__photo {
+    position: relative;
     width: 100%;
     display: block;
+    transition: all 0.3s;
+    z-index: 0;
+  }
+
+  &__photo-name {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, 50%);
+    color: #fff;
+    font-size: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease-in-out;
+    z-index: 100;
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+  }
+
+  &__item:hover &__photo-name {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(-50%, -50%);
+    box-shadow: var(--shadow-light);
   }
 }
 
